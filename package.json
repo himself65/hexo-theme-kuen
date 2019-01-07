@@ -1,9 +1,8 @@
 {
-  "name": "hexo-theme-lite",
-  "version": "1.4.1",
-  "description": "Hexo Theme Lite FE",
-  "author": "HeskeyBaozi <hezhiyu233@foxmail.com>",
-  "licenses": "MIT",
+  "name": "hexo-theme-kuen",
+  "version": "0.1.0",
+  "description": "Hexo Theme Lite Frontend",
+  "author": "himself65 <himself6565@gmail.com>",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "lint-fix": "tslint --fix --project tsconfig.json",
@@ -63,7 +62,6 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.2.2",
     "typescript-eslint-parser": "^21.0.2",
-    "typescript": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
