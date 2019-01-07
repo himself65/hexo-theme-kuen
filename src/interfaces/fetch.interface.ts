@@ -1,7 +1,7 @@
-import { Route } from 'vue-router';
-import { Store } from 'vuex';
+import { Route } from 'vue-router'
+import { Store } from 'vuex'
 
 export interface Context {
-  store: Store<any>;
-  route: Route;
+  store: Store<any>
+  route: Route
 }

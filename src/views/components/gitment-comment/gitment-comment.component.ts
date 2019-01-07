@@ -1,10 +1,9 @@
-import Vue from 'vue';
-import { mapState } from "vuex";
-import { RootState } from "@/store";
-import Gitment from 'gitment';
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import { RootState } from '@/store'
+import Gitment from 'gitment'
 
-declare const location: Location;
-
+declare const location: Location
 
 export default Vue.extend({
   name: 'gitment-comment',
@@ -23,9 +22,9 @@ export default Vue.extend({
       gitmentOptions: (state: RootState) => state.meta.themeConfig.gitment
     })
   },
-  mounted() {
+  mounted () {
     if (!this.gitmentOptions.enable) {
-      return;
+      return
     }
 
     // https://github.com/imsun/gitment#3-render-gitment
@@ -35,15 +34,15 @@ export default Vue.extend({
       repo: this.gitmentOptions.repository_name,
       oauth: {
         client_id: this.gitmentOptions.client_id,
-        client_secret: this.gitmentOptions.client_secret,
+        client_secret: this.gitmentOptions.client_secret
       },
       title: this.$route.path,
       perPage: this.gitmentOptions.per_page,
       maxCommentHeight: this.gitmentOptions.max_comment_height
-    });
+    })
 
     this.$nextTick(() => {
-      gitment.render('lite-gitment-root');
-    });
+      gitment.render('lite-gitment-root')
+    })
   }
-});
+})

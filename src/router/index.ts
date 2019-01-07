@@ -1,8 +1,7 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
-
+Vue.use(Router)
 
 export const router = new Router({
   mode: 'hash',
@@ -52,4 +51,4 @@ export const router = new Router({
       redirect: { name: '404' }
     }
   ]
-});
+})

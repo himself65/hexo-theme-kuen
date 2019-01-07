@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Site } from '@/models/hexo-config.class';
-import BlurDiv from '@/views/components/blur-div/blur-div.component.ts';
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Site } from '@/models/hexo-config.class'
+import BlurDiv from '@/views/components/blur-div/blur-div.component.ts'
 
 @Component({
   name: 'bottom-footer',
@@ -30,18 +30,18 @@ import BlurDiv from '@/views/components/blur-div/blur-div.component.ts';
   }
 })
 export default class BottomFooter extends Vue {
-  powered: string;
-  social: { [ key: string ]: string };
-  icons: { [ key: string ]: string | boolean };
-  site: Site;
-  blur: number;
+  powered: string
+  social: { [ key: string ]: string }
+  icons: { [ key: string ]: string | boolean }
+  site: Site
+  blur: number
 
-  get socialItems() {
+  get socialItems () {
     return Object.keys(this.social)
       .map(key => ({
         name: key,
         url: this.social[ key ],
         icon: this.icons[ key ]
-      }));
+      }))
   }
 }

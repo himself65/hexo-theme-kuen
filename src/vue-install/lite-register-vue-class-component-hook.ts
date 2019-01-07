@@ -1,9 +1,9 @@
-import Component from 'vue-class-component';
+import Component from 'vue-class-component'
 
 export const registerAsyncDataHook = {
-  install() {
+  install () {
     Component.registerHooks([
       'fetch'
-    ]);
+    ])
   }
-};
+}

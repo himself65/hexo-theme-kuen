@@ -1,12 +1,12 @@
-declare const window: Window;
+declare const window: Window
 
 export default {
   name: 'end-of-file',
   methods: {
-    scroll() {
+    scroll () {
       if (window) {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0)
       }
     }
   }
-};
+}

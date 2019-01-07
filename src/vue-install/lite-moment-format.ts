@@ -1,12 +1,12 @@
-import moment from 'moment';
-import { VueConstructor } from 'vue';
-import { Vue } from 'vue/types/vue';
+import moment from 'moment'
+import { VueConstructor } from 'vue'
+import { Vue } from 'vue/types/vue'
 
 export const installFormatDirective = {
-  install(Vue: VueConstructor<Vue>) {
+  install (Vue: VueConstructor) {
     Vue.filter('format', (value: string, format: string) => {
-      if (!value.length) return '';
-      return moment(new Date(value)).format(format);
-    });
+      if (!value.length) return ''
+      return moment(new Date(value)).format(format)
+    })
   }
-};
+}

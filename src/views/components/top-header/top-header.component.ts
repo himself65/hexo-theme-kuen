@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Site } from '@/models/hexo-config.class';
-import BlurDiv from '@/views/components/blur-div/blur-div.component.ts';
-import { ThemeAvatar } from '@/models/theme-config.class';
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Site } from '@/models/hexo-config.class'
+import BlurDiv from '@/views/components/blur-div/blur-div.component.ts'
+import { ThemeAvatar } from '@/models/theme-config.class'
 
 @Component({
   name: 'top-header',
@@ -23,7 +23,7 @@ import { ThemeAvatar } from '@/models/theme-config.class';
   }
 })
 export default class TopHeader extends Vue {
-  avatar: ThemeAvatar;
-  site: Site;
-  blur: number;
+  avatar: ThemeAvatar
+  site: Site
+  blur: number
 }
