@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Context } from '@/interfaces/fetch.interface'
-import { Fetch_Meta } from '@/store/types'
+import { Fetch_Meta, Fetch_Detailable_Target } from '@/store/types'
 import { Site } from '@/models/hexo-config.class'
 import TopNav from '@/views/components/top-nav/TopNav.vue'
 import TopHeader from '@/views/components/top-header/TopHeader.vue'
 import BottomFooter from '@/views/components/bottom-footer/BottomFooter.vue'
 import { RootState } from '@/store'
-import { Fetch_Detailable_Target } from '@/store/types'
 import { Theme } from '@/models/theme-config.class'
 
 @Component({
