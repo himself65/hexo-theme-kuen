@@ -2,7 +2,8 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "outDir": "./dist/",
+    "strictPropertyInitialization": false,
+    "outDir": "./dist",
     "sourceMap": true,
     "strict": true,
     "module": "esnext",
@@ -21,5 +22,8 @@
   },
   "include": [
     "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
