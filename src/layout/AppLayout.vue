@@ -1,23 +1,38 @@
 <template>
   <div id="app">
-    <top-nav :menu="theme.menu" :icons="theme.menu_icons" :blur="gaussian_radius.top_navigator"></top-nav>
+    <top-nav
+      :menu="theme.menu"
+      :icons="theme.menu_icons"
+      :blur="gaussian_radius.top_navigator"
+    />
     <header class="app-header container">
-      <top-header :avatar="theme.avatar" :site="site" :blur="gaussian_radius.header"></top-header>
+      <top-header
+        :avatar="theme.avatar"
+        :site="site"
+        :blur="gaussian_radius.header"
+      />
     </header>
 
     <section :class="bodyClass">
-      <transition name="fade" mode="out-in">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
         <keep-alive>
-          <router-view></router-view>
+          <router-view />
         </keep-alive>
       </transition>
     </section>
 
     <footer :class="footerClass">
-      <bottom-footer :powered="theme.powered_by" :social="theme.social" :icons="theme.social_icons"
-                     :site="site" :blur="gaussian_radius.footer"></bottom-footer>
+      <bottom-footer
+        :powered="theme.powered_by"
+        :social="theme.social"
+        :icons="theme.social_icons"
+        :site="site"
+        :blur="gaussian_radius.footer"
+      />
     </footer>
-
   </div>
 </template>
 
@@ -82,6 +97,4 @@
 
 </style>
 
-
 <script lang="ts" src="./app-layout.component.ts"></script>
-
