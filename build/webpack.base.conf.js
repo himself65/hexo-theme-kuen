@@ -34,7 +34,7 @@ exports.config = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.ts', '.vue', '.json'],
+    extensions: ['.js', '.jsx', '.ts', 'tsx', '.vue', '.json'],
     alias: {
       '@': resolve('src')
     }

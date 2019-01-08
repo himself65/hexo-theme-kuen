@@ -11,7 +11,10 @@
   </v-app>
 </template>
 
-<script lang="ts" src="./App.ts">
+<script>
+export default {
+  name: 'App'
+}
 </script>
 
 <style lang="stylus">
