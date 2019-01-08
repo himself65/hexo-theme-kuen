@@ -1,41 +1,42 @@
-'use strict';
-const path = require('path');
-const utils = require('./utils');
-const config = require('../config');
-const vueLoaderConfig = require('./vue-loader.conf');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+require('dotenv').config()
 
-function resolve(dir) {
+const os = require('os')
+const path = require('path')
+const utils = require('./utils')
+const config = require('../config')
+const HappyPack = require('happypack')
+const vueLoaderConfig = require('./vue-loader.conf')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+
+function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-});
+const isProd = process.env.NODE_ENV === 'production'
 
-module.exports = {
+exports.happyThreadPool = HappyPack.ThreadPool({
+  size: Math.min(os.cpus().length, 4)
+})
+
+exports.config = {
   context: path.resolve(__dirname, '../'),
+  mode: isProd ? 'production' : 'development',
   entry: {
     app: './src/entry-client.ts'
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: isProd
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.json'],
     alias: {
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -46,16 +47,8 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.ts$/,
-        use: [
-          { loader: 'babel-loader' },
-          {
-            loader: 'ts-loader',
-            options: {
-              appendTsSuffixTo: [/\.vue$/],
-            }
-          }
-        ],
+        test: /\.[jt]s$/,
+        use: 'happypack/loader?id=scripts',
         exclude: /node_modules/
       },
       {
@@ -89,11 +82,7 @@ module.exports = {
     ]
   },
   node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
     setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',
@@ -101,6 +90,26 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: true
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      checkSyntacticErrors: true,
+      tsconfig: resolve('tsconfig.json'),
+      tslint: resolve('tslint.json'),
+      vue: true
+    }),
+    new HappyPack({
+      id: 'scripts',
+      threadPool: exports.happyThreadPool,
+      loaders: [
+        'babel-loader',
+        {
+          loader: 'ts-loader',
+          options: { happyPackMode: true }
+        }
+      ]
+    })
   ]
-};
+}
