@@ -12,22 +12,11 @@
     ]
   },
   "rules": {
-    "array-type": [
-      true,
-      "array"
-    ],
-    "use-type-alias": true,
-    "no-inferrable-types": true,
-    "unified-signatures": true,
-    "use-default-type-parameter": true,
-    "no-undefined-argument": true,
-    "no-unused-variable": false,
-    "no-invalid-this": false,
-    "restrict-plus-operands": false,
-    "no-useless-cast": false,
-    "variable-name": {
-      "severity": "warning"
-    }
-  },
-  "rulesDirectory": []
+    "quotemark": [true, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-consecutive-blank-lines": false
+  }
 }
